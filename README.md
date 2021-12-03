@@ -1,0 +1,5 @@
+# FNAFMC Bot
+Made with MongoDB + Discord.js
+
+## WARNING:
+MADE FOR A SINGLE GUILD. WILL BREAK WITH OTHER GUILDS.
