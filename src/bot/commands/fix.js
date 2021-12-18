@@ -1,4 +1,4 @@
-module.exports = class ReportCommand {
+module.exports = class FixCommand {
     constructor(){
         this.name = "Fix";
         this.usage = `${process.env.PREFIX}fix`;
@@ -8,18 +8,24 @@ module.exports = class ReportCommand {
     }
 
     async execute(client, message, args){
-        let count = 0;
-        const guild = message.guild;
-        
-        const channels = await guild.channels.fetch();
-        channels.each(async channel => {
-            if(channel.type == "GUILD_TEXT"){
-                const catagory = channel.parent;
-                if(catagory.name.toLowerCase().includes("rp") || catagory.name.toLowerCase().includes("roleplay"))
-                    channel.delete("RP Channel"), count++;
-            }
-        });
+        const channels = await message.guild.channels.fetch();
 
-        message.channel.send(`:white_check_mark: Deleted ${count} roleplay channels`);
+        channels.forEach(channel => {
+            if(channel.type == "GUILD_TEXT"){
+                console.log("❌ Removed perms to " + channel.name);
+
+                channel.permissionOverwrites.create(message.guild.roles.cache.find(id => id.id == "704741911746838695"), {
+                    SEND_MESSAGES: false,
+                });
+            }
+
+            if(channel.type == "GUILD_VOICE"){
+                console.log("❌ Removed perms to " + channel.name);
+
+                channel.permissionOverwrites.create(message.guild.roles.cache.find(id => id.id == "704741911746838695"), {
+                    SPEAK: false
+                });
+            }
+        })
     }
 }

@@ -2,7 +2,7 @@ const embeds = require('../../library/embeds');
 const { Permissions: perms, MessageEmbed } = require('discord.js');
 const nv = process.env;
 
-module.exports = class ReportCommand {
+module.exports = class BugCommand {
     constructor(){
         this.name = "Bug Report";
         this.usage = `${process.env.PREFIX}bug`;

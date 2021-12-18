@@ -1,4 +1,4 @@
-module.exports = class ReportCommand {
+module.exports = class SuggestCommand {
     constructor(){
         this.name = "Suggest";
         this.usage = `${process.env.PREFIX}suggest`;

@@ -1,3 +1,5 @@
+const MongoScheduler = require('./util/SchedulerUtil');
+
 module.exports.initialize = () => {
     // Discord
     const discord = require('discord.js');

@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 
-module.exports = class ReportCommand {
+module.exports = class WhoisCommand {
     constructor(){
         this.name = "Whois";
         this.usage = `${process.env.PREFIX}whois <@Mention>`;
